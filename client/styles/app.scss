@@ -47,6 +47,9 @@ html, body, #app {
   > div {
     box-sizing: border-box;
     border-left: 1px solid #aaa;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     &:first-child {
       border-left: none;
