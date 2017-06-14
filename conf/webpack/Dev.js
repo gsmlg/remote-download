@@ -13,6 +13,8 @@ class WebpackDevConfig extends WebpackBaseConfig {
     this.config = {
       devtool: 'cheap-module-source-map',
       entry: {
+        es: 'eventsource-polyfill',
+        hot: 'webpack-hot-middleware/client?reload=true',
         app: 'client'
       },
       plugins: [

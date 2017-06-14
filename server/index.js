@@ -72,47 +72,10 @@ setupFrontend(app, {
   publicPath: '/',
 });
 
-
+require('./files')(app);
 
 var host = '0.0.0.0', port = 3000;
 
 server.listen(port, host, function(){
   console.log('Server started at '+host+ ':'+port+'.');
-});
-
-
-app.get('/files', (req, res)=> {
-  fs.readdir(FILES_PATH, {}, (err, files) => {
-    res.send(files.map(file => {
-      let stat = fs.statSync(file);
-      let type = null;
-      switch(true) {
-        case stat.isFile():
-          type = 'file';
-          break;
-        case stat.isDirectory():
-          type = 'directory';
-          break;
-        case stat.isBlockDevice():
-          type = 'block';
-          break;
-        case stat.isCharacterDevice():
-          type = 'character';
-          break;
-        case stat.isSymbolicLink():
-          type = 'symbolLink';
-          break;
-        case stat.isFIFO():
-          type = 'fifo';
-          break;
-        case stat.isSocket():
-          type = 'socket';
-          break;
-      }
-      return Object.assign({
-        name: file,
-        type: type,
-      }, stat);
-    }));
-  });
 });

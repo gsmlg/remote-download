@@ -8,3 +8,6 @@ npm-offline-mirror
 .DS_Store
 npm-debug.log
 .idea
+
+# App
+/files
